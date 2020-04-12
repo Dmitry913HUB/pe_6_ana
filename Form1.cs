@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,24 +17,38 @@ namespace pe6
         const string MODE_VIEW = "Mode: view";
         const string MODE_EDIT = "Mode: edit";
         const string REALLY_CREATE_NEW = "Are you really want create new collection? Current collection will be removed.";
-        ArrayList list = new ArrayList();
+        
+        BindingList<CoTrigonometric> bList = new BindingList<CoTrigonometric>();
+        DataSet ds;
         public FormMain()
         {
             InitializeComponent();
-            //dataGridView1.RowHeadersVisible = false;//disable first column
+            dataGridView1.RowHeadersVisible = false;//disable first column
             dataGridView1.Columns.Add("abs", "abs");
-            dataGridView1.Columns.Add("fi", "fi");
-            dataGridView1.Columns[0].Width = 50;
-            dataGridView1.Columns[1].Width = 50;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            //dataGridView1.Columns.Add("fi", "fi");
+            //dataGridView1.Columns[0].Width = 50;
+            //dataGridView1.Columns[1].Width = 50;
+            //dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            //dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            //ds.c
+            CoTrigonometric ct1 = new CoTrigonometric(1, 1);
+            CoTrigonometric ct2 = new CoTrigonometric(2, 2);
+            CoTrigonometric ct3 = new CoTrigonometric(3, 3);
+
+
+            bList.Add(ct1);
+            bList.Add(ct2);
+            bList.Add(ct3);
+
+            //var source = new BindingSource(bList, null);
+            dataGridView1.DataSource = bList;
+            //dataGridView1.DataSource = bList;
+
+
+
             collView();
-
-            String[] arr1 = { "1", "1" };
-            dataGridView1.Rows.Add(arr1);
-            String[] arr2 = { "2", "2" };
-            dataGridView1.Rows.Add(arr2);
-
+            
         }
         //--------------------------------------------------------------------------------------------service
         private bool stringIsNumber(string s)
@@ -74,14 +89,15 @@ namespace pe6
                 {
                     ct.abs = Convert.ToDouble(dataGridView1.Rows[i].Cells["abs"].Value);
                     ct.fi = Convert.ToDouble(dataGridView1.Rows[i].Cells["fi"].Value);
-                    list.Add(ct);
+                    //list.Add(ct);
+                    bList.Add(ct);
                 }
             }
         }
         void showList()
         {
             string s = "";
-            foreach (CoTrigonometric ct in list)
+            foreach (CoTrigonometric ct in bList)//list
             {
                 s += ct.ToString() + "\n";
             }
@@ -94,22 +110,22 @@ namespace pe6
             if(result == DialogResult.Yes) {
                 dataGridView1.Rows.Clear();
                 labelCollMode.Text = MODE_CREATE;
-                dataGridView1.Columns["abs"].ReadOnly = false;
-                dataGridView1.Columns["fi"].ReadOnly = false;
+                //dataGridView1.Columns["abs"].ReadOnly = false;
+                //dataGridView1.Columns["fi"].ReadOnly = false;
             }        
         }
         void collView()
         {
             labelCollMode.Text = MODE_VIEW;
-            dataGridView1.Columns["abs"].ReadOnly = true;
-            dataGridView1.Columns["fi"].ReadOnly = true;
+            //dataGridView1.Columns["abs"].ReadOnly = true;
+            //dataGridView1.Columns["fi"].ReadOnly = true;
             
         }
         void collEdit()
         {
             labelCollMode.Text = MODE_EDIT;
-            dataGridView1.Columns["abs"].ReadOnly = false;
-            dataGridView1.Columns["fi"].ReadOnly = false;
+            //dataGridView1.Columns["abs"].ReadOnly = false;
+            //dataGridView1.Columns["fi"].ReadOnly = false;
             
         }
         
@@ -138,13 +154,12 @@ namespace pe6
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tableToList();
-            //tableValidation();
+
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
