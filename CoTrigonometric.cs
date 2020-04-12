@@ -5,8 +5,8 @@ namespace pe6
     internal class CoTrigonometric
     {
         const double EPS = 0.001;
-        internal double abs { get; set; }
-        internal double fi { get; set; }
+        public double abs { get; set; }//internal
+        public double fi { get; set; }
 
         internal CoTrigonometric()
         {

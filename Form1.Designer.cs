@@ -44,8 +44,15 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelCollMode = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelAbs = new System.Windows.Forms.Label();
+            this.labelFi = new System.Windows.Forms.Label();
+            this.textBoxAbs = new System.Windows.Forms.TextBox();
+            this.textBoxFi = new System.Windows.Forms.TextBox();
+            this.buttonApply = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -167,7 +174,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 388);
+            this.dataGridView1.Size = new System.Drawing.Size(439, 388);
             this.dataGridView1.TabIndex = 1;
             // 
             // labelCollMode
@@ -179,11 +186,68 @@
             this.labelCollMode.TabIndex = 2;
             this.labelCollMode.Text = "labelCollMode";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonApply);
+            this.groupBox1.Controls.Add(this.textBoxFi);
+            this.groupBox1.Controls.Add(this.textBoxAbs);
+            this.groupBox1.Controls.Add(this.labelFi);
+            this.groupBox1.Controls.Add(this.labelAbs);
+            this.groupBox1.Location = new System.Drawing.Point(483, 50);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(305, 214);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // labelAbs
+            // 
+            this.labelAbs.AutoSize = true;
+            this.labelAbs.Location = new System.Drawing.Point(32, 32);
+            this.labelAbs.Name = "labelAbs";
+            this.labelAbs.Size = new System.Drawing.Size(35, 20);
+            this.labelAbs.TabIndex = 0;
+            this.labelAbs.Text = "abs";
+            // 
+            // labelFi
+            // 
+            this.labelFi.AutoSize = true;
+            this.labelFi.Location = new System.Drawing.Point(143, 32);
+            this.labelFi.Name = "labelFi";
+            this.labelFi.Size = new System.Drawing.Size(17, 20);
+            this.labelFi.TabIndex = 1;
+            this.labelFi.Text = "fi";
+            // 
+            // textBoxAbs
+            // 
+            this.textBoxAbs.Location = new System.Drawing.Point(36, 78);
+            this.textBoxAbs.Name = "textBoxAbs";
+            this.textBoxAbs.Size = new System.Drawing.Size(100, 26);
+            this.textBoxAbs.TabIndex = 2;
+            // 
+            // textBoxFi
+            // 
+            this.textBoxFi.Location = new System.Drawing.Point(147, 77);
+            this.textBoxFi.Name = "textBoxFi";
+            this.textBoxFi.Size = new System.Drawing.Size(100, 26);
+            this.textBoxFi.TabIndex = 3;
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Location = new System.Drawing.Point(36, 137);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(142, 41);
+            this.buttonApply.TabIndex = 4;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelCollMode);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -193,6 +257,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,6 +282,12 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labelCollMode;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelFi;
+        private System.Windows.Forms.Label labelAbs;
+        private System.Windows.Forms.Button buttonApply;
+        private System.Windows.Forms.TextBox textBoxFi;
+        private System.Windows.Forms.TextBox textBoxAbs;
     }
 }
 
