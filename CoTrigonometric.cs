@@ -8,9 +8,7 @@ namespace pe6
     {
         
         public const double EPS = 0.001;
-
         public double abs { get; set; }//internal
-
         public double fi { get; set; }
 
         internal CoTrigonometric()

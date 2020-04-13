@@ -6,63 +6,46 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace pe6
 {
     [Serializable()]
-    internal class CoTrSave
-    {
-
-        BindingList<CoTrigonometric> bList = new BindingList<CoTrigonometric>();
-
-        internal CoTrSave(BindingList<CoTrigonometric> bl)
+    internal abstract class CoTrSave
+    {    
+        //------------------------------------------------------------------------serialization, save, load
+        internal static bool save(BindingList<CoTrigonometric> bList, string path)
         {
-            this.bList = bl;
-        }
-        internal CoTrSave()
-        {
-            this.bList = null;
-        }
-        //--------------------------------------------------------------------
-        internal BindingList<CoTrigonometric> ReadAndDeserialize(string path)
-        {
-            var serializer = new XmlSerializer(typeof(BindingList<CoTrigonometric>));
-            using (var reader = new StreamReader(path))
+            try
             {
-                return (BindingList<CoTrigonometric>)serializer.Deserialize(reader);
+                var binFormatter = new BinaryFormatter();
+                using (var fStream = new FileStream(path, FileMode.Create))
+                {
+                    binFormatter.Serialize(fStream, bList);
+                    return true;
+                }
             }
-
-        }
-
-        internal void SerializeAndSave(string path, BindingList<CoTrigonometric> data)
-        {
-            var serializer = new XmlSerializer(typeof(BindingList<CoTrigonometric>));
-            using (var writer = new StreamWriter(path))
+            catch
             {
-                serializer.Serialize(writer, data);
-                writer.Flush();//???
-            }
-
-        }
-        internal void save()//BindingList<CoTrigonometric> bList
-        {
-            var binFormatter = new BinaryFormatter();
-            using (var file = new FileStream("test.bin", FileMode.Create))
-            {
-                binFormatter.Serialize(file, bList);
+                return false;
             }
         }
-        internal BindingList<CoTrigonometric> load()//BindingList<CoTrigonometric> bList
+        internal static BindingList<CoTrigonometric> load(string path)
         {
-            var binFormatter = new BinaryFormatter();
-            using (var file = new FileStream("test.bin", FileMode.Open))
+            try
             {
-                //var neww = binFormatter.Deserialize(file) as BindingList<CoTrigonometric>;
-                return binFormatter.Deserialize(file) as BindingList<CoTrigonometric>;
-
+                var binFormatter = new BinaryFormatter();
+                using (var fStream = new FileStream(path, FileMode.Open))
+                {
+                    return binFormatter.Deserialize(fStream) as BindingList<CoTrigonometric>;
+                }
+            }
+            catch
+            {              
+                return null;                
             }
         }
-        //----------------------------------------------------------------
+        //---------------------------------------------------------------------------
     }
 }
