@@ -44,7 +44,7 @@ namespace pe6
         {
             foreach (CoTrigonometric c in bList)
             {
-                if (Math.Abs(c.abs - abs) < eps && Math.Abs(c.fi - fi) < eps)
+                if (Math.Abs(c.abs - abs) <= eps && Math.Abs(c.fi - fi) <= eps)
                 {
                     return true;
                 }
@@ -64,7 +64,7 @@ namespace pe6
             {
                 int mid = l + (r - l) / 2;
 
-                if (Math.Abs(bList[mid].abs - abs) < eps && Math.Abs(bList[mid].fi - fi) < eps)
+                if (Math.Abs(bList[mid].abs - abs) <= eps && Math.Abs(bList[mid].fi - fi) <= eps)
                     return true;
 
                 if (bList[mid].abs > abs || bList[mid].fi > fi)

@@ -49,8 +49,8 @@ namespace pe6
 
             dataGridView1.DataSource = bList;
 
-            //stateView();
-            stateSearchLinear();
+            stateView();
+            //stateSearchLinear();
         }
         //---------------------------------------------------------------------------------------service
         private bool stringIsNumber(string s)
